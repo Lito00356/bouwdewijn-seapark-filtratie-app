@@ -1,0 +1,18 @@
+<div class="card-item card-item--measurement" data-measurement-definition-id="<%= definition.id %>"
+    data-measurement-name="<%= definition.name %>" data-measurement-short-name="<%= definition.short_name %>"
+    data-measurement-min="<%= definition.min_value %>" data-measurement-max="<%= definition.max_value %>"
+    data-measurement-unit="<%= definition.unit %>" data-measurement-active="<%= definition.is_active %>">
+
+    <div class="card-item__header">
+        <h4 class="card-item__title">
+            <%= definition.name %>
+        </h4>
+        <%- include('../partials/admin-dropdown', {entityName: "measurement_definition" }) %>
+    </div>
+
+    <% if (definition.short_name) { %>
+        <span class="card-item__badge">
+            <%= definition.short_name %>
+        </span>
+        <% } %>
+</div>

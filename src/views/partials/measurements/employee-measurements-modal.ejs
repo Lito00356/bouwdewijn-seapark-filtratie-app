@@ -1,0 +1,18 @@
+<dialog class="modal rounded bg-blocks border-none w-full" data-modal="validation-dialog">
+    <div class="flex flex--col flex--center p-inline-lg gap-base p-top-lg">
+        <h2 class="text-lg text-semibold text-center text-max-w255 line-height-12">Confirm Measurements</h2>
+        <div class="flex flex--col gap-sm mb-lg w-full">
+            <ul data-confirm-inputs class="flex flex--col gap-sm w-full">
+                <!-- Measurements dynamically inserted here -->
+            </ul>
+        </div>
+        <div class="grid grid--2 gap-base m-bottom-lg">
+            <button class="rounded p-inline-md p-block-sm text-lg text-primary bg-red-muted shadow pointer border-none" type="button" data-close>
+                No
+            </button>
+            <button class="rounded p-inline-md p-block-sm text-lg text-primary bg-blue-accent shadow pointer border-none" type="button" type="submit" data-submit>
+                Yes
+            </button>
+        </div>
+    </div>
+</dialog>

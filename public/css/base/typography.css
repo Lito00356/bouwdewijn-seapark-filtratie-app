@@ -1,0 +1,5 @@
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-base);
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,18 @@
+.header {
+  height: fit-content;
+  padding: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+
+  & .header__image {
+    width: 6rem;
+  }
+
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+
+    & .header__image {
+      width: 9.375rem;
+    }
+  }
+}

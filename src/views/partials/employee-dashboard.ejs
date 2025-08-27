@@ -1,0 +1,11 @@
+<h1 class="text-xl font-semibold">Hello <%= currentUser.firstname %>!</h1>
+<nav aria-label="Main navigation" class="flex flex--col gap-base">
+    <% employeeNavigationData.dashboards.filter(item => item.showInDashboard).forEach(item => { %>
+        <a href="<%= item.href %>" aria-label="<%= item.ariaLabel %>" class="flex flex--center flex--col gap-md p-xl bg-blue-accent-muted rounded shadow-subtle border">
+            <svg class="icon icon--3xl icon--fg-color" role="img" aria-label="<%= item.title %> icon">
+                <use href="/assets/icons/sprite.svg#<%= item.icon %>"></use>
+            </svg>
+            <h2 class="text-primary text-2xl"><%= item.title %></h2>
+        </a>
+    <% }); %>
+</nav>

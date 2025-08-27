@@ -1,0 +1,31 @@
+<%- include('./employee-content-header', { headerTitle: 'Measurements' , departments, selectedDepartmentId }) %>
+
+<% if (subdepartments.length > 1) { %>
+    <section>
+        <div class="flex flex--between flex--center gap-sm">
+            <label for="subdepartment-filter" class="text-base font-semibold">Subdepartment:</label>
+            <div class="select-wrapper">
+                <select class="select border rounded pointer shadow-subtle bg-blocks" name="subdepartment"
+                    data-subdepartment-selector>
+                    <% subdepartments.forEach(subdept => { %>
+                        <option value="<%= subdept.id %>" <%= subdept.id === defaultSubDepartmentId ? 'selected' : '' %> class="text-lg bg-blocks" data-original-name="<%= subdept.name %>">
+                            <%= subdept.name.replace(/ pool/gi, '').trim() %>
+                        </option>
+                    <% }) %>
+                </select>
+                <svg class="icon icon--base">
+                    <use href="/assets/icons/sprite.svg#arrow-icon"></use>
+                </svg>
+            </div>
+        </div>
+    </section>
+<% } %>
+
+<!-- Include the measurements form partial -->
+<%- include('./measurements/employee-measurements-form', { 
+    measurementDefinitions, 
+    defaultSubDepartmentId 
+}) %>
+
+<!-- Include the confirmation modal partial -->
+<%- include('./measurements/employee-measurements-modal') %>

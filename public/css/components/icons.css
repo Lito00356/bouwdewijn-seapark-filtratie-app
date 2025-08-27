@@ -1,0 +1,66 @@
+.icon {
+  aspect-ratio: 1 / 1;
+  fill: currentColor;
+
+  &.icon--base,
+  &.arrow {
+    width: var(--spacing-xl);
+  }
+
+  &.icon--back {
+    transform: rotate(90deg);
+    width: var(--spacing-2xl);
+    fill: var(--fg-color);
+  }
+
+  &.icon--8xl {
+    width: var(--spacing-8xl);
+  }
+
+  &.icon--3xl {
+    width: var(--spacing-3xl);
+  }
+
+  &.icon--25xl {
+    width: var(--spacing-25xl);
+  }
+
+  &.icon--2xl {
+    width: var(--spacing-2xl);
+  }
+  &.icon--fg-color {
+    fill: var(--fg-color);
+  }
+
+  &.icon--account {
+    fill: var(--brand-color);
+  }
+
+  &.icon--checkmark {
+    width: var(--2xl);
+    height: var(--2xl);
+    background-color: var(--success-color);
+    border-radius: 50%;
+    padding: var(--spacing-xs);
+    fill: var(--white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.icon--warning {
+    width: var(--2xl);
+    height: var(--2xl);
+    background-color: var(--alert-color);
+    border-radius: 50%;
+    padding: var(--spacing-xs);
+    fill: var(--white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &.icon--remove {
+    align-self: flex-start;
+    flex-shrink: 0;/* Small offset to align better with first line of text */
+  }
+}

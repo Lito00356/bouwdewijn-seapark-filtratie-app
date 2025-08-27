@@ -1,0 +1,11 @@
+.shadow {
+  box-shadow: var(--shadow);
+}
+
+.shadow-subtle {
+  box-shadow: var(--shadow-subtle);
+}
+
+.shadow-none {
+  box-shadow: none;
+}

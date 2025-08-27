@@ -1,0 +1,82 @@
+<section class="dashboard">
+
+    <div>
+        <%- include("../partials/breadcrumbs") %>
+    </div>
+
+    <strong class="dashboard__title">
+        <%= breadcrumbs[1].label %>
+    </strong>
+
+    <section class="statistics" id="statistics-article">
+
+        <form id="filters-form" class="filters-form">
+
+            <div class="filter-group">
+                <label for="department-select">Department:</label>
+                <select name="department" id="department-select">
+                    <option value="">All Departments</option>
+                    <% departments.forEach(dept=> { %>
+                        <option value="<%= dept.id %>">
+                            <%= dept.name %>
+                        </option>
+                        <% }) %>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="subdepartment-select">Subdepartment:</label>
+                <select name="subdepartment" id="subdepartment-select">
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="start-date">Start Date:</label>
+                <input type="date" name="startDate" id="start-date">
+            </div>
+
+            <div class="filter-group">
+                <label for="end-date">End Date:</label>
+                <input type="date" name="endDate" id="end-date">
+            </div>
+
+            <div class="filter-group">
+                <label for="parameter-select">Parameter:</label>
+                <select name="parameter" id="parameter-select">
+                </select>
+            </div>
+
+            <button type="button" id="apply-filters-btn" class="filter-submit-btn">Apply Filters</button>
+        </form>
+
+        <div id="loading-indicator" class="loading" style="display: none;">
+            Loading measurement data...
+        </div>
+
+        <div class="statistics__actions">
+            <button class="statistics__export" id="export-data" disabled>Export to Excel</button>
+        </div>
+
+        <div class="statistics__results" id="results-container">
+            <div class="no-results">
+                <p>Select filters above to view measurement data.</p>
+            </div>
+        </div>
+
+    </section>
+</section>
+<div class="<%= breadcrumbs[1] && breadcrumbs[1].label === 'Departments' ? '' : 'modal-window' %>" id="modal-bg">
+    <section
+        class="<%= breadcrumbs[1] && breadcrumbs[1].label === 'Departments' ? 'notifications' : 'notifications-modal' %>"
+        id="notifications-section">
+
+        <% if (breadcrumbs[1] && breadcrumbs[1].label !=="Departments" ) { %>
+            <%- include("../partials/notificationsModal") %>
+                <% } %>
+
+    </section>
+</div>
+<script>
+    window.departmentsData = <%- JSON.stringify(departments) %>;
+    window.measurementDefinitionsData = <%- JSON.stringify(measurementDefinitions) %>;
+</script>

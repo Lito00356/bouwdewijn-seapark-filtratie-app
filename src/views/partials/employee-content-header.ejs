@@ -1,0 +1,28 @@
+<header class="flex flex--between flex--center">
+    <div class="flex flex--center translate-x-left-sm">
+        <a href="/employee">
+            <svg class="icon icon--back">
+                <use href="/assets/icons/sprite.svg#arrow-icon"></use>
+            </svg>
+        </a>
+        <h1 class="text-lg">
+            <%= headerTitle %>
+        </h1>
+    </div>
+    <form data-department-id="<%= selectedDepartmentId %>">
+        <label for="department-filter" class="sr-only">Filter by department</label>
+        <div class="select-wrapper flex flex--center">
+            <select class="select border rounded pointer shadow-subtle bg-blocks" name="department" id="department-filter" data-department-selector>
+                <% departments.forEach(dept=> { %>
+                    <option value="<%= dept.id %>" <%=dept.id===selectedDepartmentId ? 'selected' : '' %> class="text-lg
+                        bg-blocks">
+                        <%= dept.name %>
+                    </option>
+                    <% }) %>
+            </select>
+            <svg class="icon icon--base">
+                <use href="/assets/icons/sprite.svg#arrow-icon"></use>
+            </svg>
+        </div>
+    </form>
+</header>

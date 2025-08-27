@@ -1,0 +1,64 @@
+.form {
+  display: contents;
+}
+
+.form__input {
+  display: inline-block;
+  border: none;
+  border-bottom: 1px solid var(--text-muted-color);
+  background-color: transparent;
+  width: 100%;
+  height: 1.85rem;
+  padding: 0 0.25rem;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.form__buttons {
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.form__button {
+  background-color: transparent;
+  border: none;
+  border-radius: 0.625rem;
+  cursor: pointer;
+
+  &.confirm {
+    background-color: var(--success-muted-color);
+  }
+
+  &.cancel {
+    background-color: var(--alert-muted-color);
+  }
+}
+
+.form__first-name {
+  grid-column: 1 /2;
+  grid-row: 2/2;
+}
+
+.form__last-name {
+  grid-row: 2/3;
+}
+
+.form__ci {
+  grid-row: 2/3;
+}
+
+.form__is-active {
+  grid-row: 2/3;
+}
+
+.form__is-admin {
+  grid-row: 2/3;
+}
+
+.form__buttons {
+  grid-row: 2/3;
+}

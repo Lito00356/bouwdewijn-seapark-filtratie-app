@@ -1,0 +1,10 @@
+<div class="user-card__input-container">
+    <input class="user-card__input border border-accent rounded-md p-xs" type="<%= type %>" name="<%= name %>"
+        placeholder="<%= placeholder %>" inputmode="numeric" required maxlength="4" pattern="\d{4}"
+        title="PIN must be exactly 4 digits">
+    <% if (err && submittedUserId && userId === submittedUserId) { %>
+        <div class="user-card__error">
+            <%= err %>
+        </div>
+        <% } %>
+</div>

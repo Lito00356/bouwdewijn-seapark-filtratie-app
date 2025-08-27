@@ -1,0 +1,11 @@
+.translate-x-left-sm {
+  transform: translateX(-0.6rem);
+}
+
+.translate-x-left-md {
+  transform: translateX(-1rem);
+}
+
+.translate-x-left-lg {
+  transform: translateX(-1.5rem);
+}

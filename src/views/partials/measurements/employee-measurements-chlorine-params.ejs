@@ -1,0 +1,33 @@
+<div class="flex flex--col gap-md">
+    <h3 class="text-base text-muted font-semibold">Chlorine</h3>
+    <div class="flex flex--col gap-xs">
+        <% const orderedChlorine=[]; const freeChlorine=chlorineParams.find(p=> p.name === 'Free chlorine');
+            const freeChlorineDepo = chlorineParams.find(p => p.name === 'Free chlorine Depolox');
+            const totalChlorine = chlorineParams.find(p => p.name === 'Total chlorine');
+            const combinedChlorine = chlorineParams.find(p => p.name === 'Combined Chlorine');
+
+            if (freeChlorine) orderedChlorine.push(freeChlorine);
+            if (freeChlorineDepo) orderedChlorine.push(freeChlorineDepo);
+            if (totalChlorine) orderedChlorine.push(totalChlorine);
+            if (combinedChlorine) orderedChlorine.push(combinedChlorine);
+            %>
+            <% orderedChlorine.forEach(def=> { %>
+                <div class="flex flex--between flex--center p-sm border rounded bg-blue-accent-muted">
+                    <label for="<%= def.short_name %>" class="text-base font-medium">
+                        <%= def.name.replace(/chlorine/gi, '' ).trim() %>
+                    </label>
+                    <div class="grid grid--2 grid--items-center gap-xs">
+                        <input type="text" id="<%= def.short_name %>" name="<%= def.name %>"
+                            class="measurement-input border rounded p-xs <%= def.name === 'Combined Chlorine' ? 'readonly-input' : '' %>"
+                            inputmode="decimal" pattern="[0-9]*\.?[0-9]*" maxlength="5"
+                            data-min="<%= def.min_value || '' %>" data-max="<%= def.max_value || '' %>"
+                            data-measurement-key="<%= def.measurement_key %>" data-decimal-input
+                            <%=def.name==='Combined Chlorine' ? 'readonly' : '' %> />
+                        <span class="text-sm text-muted">
+                            <%= def.unit %>
+                        </span>
+                    </div>
+                </div>
+                <% }) %>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<tr class="measurement-table__row" data-measurement-definition-id="<%= definition.id %>"
+    data-measurement-name="<%= definition.name %>" data-measurement-short-name="<%= definition.short_name %>"
+    data-measurement-min="<%= definition.min_value %>" data-measurement-max="<%= definition.max_value %>"
+    data-measurement-unit="<%= definition.unit %>" data-measurement-active="<%= definition.is_active %>">
+
+    <td class="measurement-table__cell">
+        <div class="font-semibold flex flex--col">
+            <%= definition.name %>
+                <% if (definition.unit) { %>
+                    <span class="measurement-table__unit font-medium text-md text-muted">Unit: <%= definition.unit %></span>
+                    <% } %>
+                        <% if (definition.short_name) { %>
+                            <small class="text-muted font-medium text-md">Short name: <%= definition.short_name %>
+                            </small>
+                            <% } %>
+        </div>
+    </td>
+
+    <td class="measurement-table__cell">
+        <input type="number" class="measurement-table__value" value="<%= definition.min_value %>" readonly>
+    </td>
+
+    <td class="measurement-table__cell">
+        <input type="number" class="measurement-table__value" value="<%= definition.max_value %>" readonly>
+    </td>
+
+    <td class="measurement-table__cell">
+        <%- include('../partials/admin-dropdown', { entityName: 'measurement_definition' }) %>
+    </td>
+</tr>

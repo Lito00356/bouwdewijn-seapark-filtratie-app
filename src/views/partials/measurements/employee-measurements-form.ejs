@@ -1,0 +1,62 @@
+<section class="bg-blocks shadow-subtle border rounded p-base">    
+    <form class="flex flex--col gap-lg" data-convert-comma-to-dot data-number-validation
+        data-subdepartment-id="<%= defaultSubDepartmentId %>" data-measurement-form>
+        <% const basicParams=measurementDefinitions.filter(def=>
+            ['ph','ph depolox', 'temperature', 'salinity'].includes(def.name.toLowerCase())
+            );
+            const chlorineParams = measurementDefinitions.filter(def =>
+            def.name.toLowerCase().includes('chlorine')
+            );
+            const microbiologyParams = measurementDefinitions.filter(def =>
+            ['Total Coliforms', 'E coli'].includes(def.name)
+            );
+            %>
+
+            <div class="grid grid--2 grid--items-center">
+                <span class="text-lg text-muted font-semibold">Parameter</span>
+                <span class="text-lg text-muted font-semibold">Value</span>
+            </div>
+
+            <!-- Basic Parameters Section -->
+            <%- include('./employee-measurements-basic-params', { basicParams }) %>
+
+                <!-- Chlorine Parameters Section -->
+                <% if (chlorineParams.length> 0) { %>
+                    <%- include('./employee-measurements-chlorine-params', { chlorineParams }) %>
+                        <% } %>
+
+                            <!-- Microbiology Parameters Section -->
+                            <% if (microbiologyParams.length> 0) { %>
+                                <%- include('./employee-measurements-microbiology-params', { microbiologyParams }) %>
+                                    <% } %>
+
+                                        <!-- Comments Section -->
+                                        <label class="select-wrapper flex flex--center gap-md">
+                                            <span>Comment type:</span>
+                                            <select name="comment_type"
+                                                class="select border rounded pointer shadow-subtle bg-blocks"
+                                                data-select="comment-type-choice">
+                                                <% commentTypes.forEach(type=> { %>
+                                                    <option value="<%= type.value %>">
+                                                        <%= type.label %>
+                                                    </option>
+                                                    <% }) %>
+                                            </select>
+                                            <svg class="icon icon--base">
+                                                <use href="/assets/icons/sprite.svg#arrow-icon"></use>
+                                            </svg>
+                                        </label>
+                                        <div class="flex flex--col gap-sm">
+                                            <textarea data-measurements-comment name="comments"
+                                                class="border rounded p-md" rows="3"
+                                                placeholder="Enter any observations or comments..."></textarea>
+                                        </div>
+
+                                        <!-- Submit Button -->
+                                        <button
+                                            class="btn p-md text-lg text-primary font-semibold rounded bg-blue-accent"
+                                            data-validate type="button">
+                                            Submit
+                                        </button>
+    </form>
+</section>

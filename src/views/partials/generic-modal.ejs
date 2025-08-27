@@ -1,0 +1,10 @@
+<dialog class="modal rounded bg-blocks border-none" data-modal="<%= config.modalName %>">
+    <div class="modal__content p-lg">
+        <div class="modal__header">
+            <h2 class="text-xl">
+                <%= config.title %>
+            </h2>
+        </div>
+        <%- include(config.formPartial, config.formData || {}) %>
+    </div>
+</dialog>

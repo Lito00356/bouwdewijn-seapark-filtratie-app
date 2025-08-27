@@ -1,0 +1,53 @@
+.static { position: static; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+.fixed--top {
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.fixed--bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.fixed--bottom {
+  bottom: 0;
+}
+.fixed--right {
+  right: 0;
+}
+
+.fixed--top-right {
+  top: 0;
+  right: 0;
+}
+
+.fixed--top-right-sm {
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+}
+
+.out-of-view-right {
+  right: -100%;
+}
+
+.translate-x-100 {
+  transform: translateX(100%);
+}
+
+.translate-x-0 {
+  transform: translateX(0);
+}
+
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-30 { z-index: 30; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+.z-60 { z-index: 60; }

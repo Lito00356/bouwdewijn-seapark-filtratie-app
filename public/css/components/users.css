@@ -1,0 +1,98 @@
+.center-viewport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16.375rem, 1fr));
+  gap: var(--spacing-xl);
+  row-gap: var(--spacing-3xl);
+  padding: var(--spacing-lg);
+  max-width: 75rem;
+  width: 100%;
+  margin: 0 auto;
+  justify-items: center;
+  justify-content: center;
+
+  @media (max-width: 37.5rem) {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+  }
+
+  .user-card {
+    min-height: 16.875rem;
+    align-self: center;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    cursor: pointer;
+
+    @media (max-width: 37.5rem) {
+      min-width: 0;
+      width: 100%;
+      padding: var(--spacing-sm);
+      min-height: 11.25rem;
+    }
+
+    .user-card__form {
+      display: flex;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: 0.5s cubic-bezier(0.6, 0, 0.2, 1);
+      transform: translateY(10px);
+      width: fit-content;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-md);
+
+      .user-card__input-container {
+        width: 50%;
+
+        @media (max-width: 37.5rem) {
+          width: 100%;
+          max-width: 5.625rem;
+        }
+
+        .user-card__input {
+          width: 100%;
+        }
+
+        .user-card__error {
+          color: var(--alert-color);
+          font-size: 0.75rem;
+          margin-top: var(--spacing-xs);
+          text-align: center;
+          font-weight: 500;
+        }
+      }
+
+      .user-card__submit {
+        background-color: var(--bg-blocks-color);
+        color: var(--fg-color);
+        box-shadow: var(--shadow-subtle);
+        padding-inline: var(--spacing-lg);
+        border-radius: var(--xl);
+        cursor: pointer;
+        border: none;
+      }
+    }
+
+    .icon--8xl {
+      @media (max-width: 37.5rem) {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+    &.active .user-card__form,
+    &.has-error .user-card__form {
+      max-height: 120px;
+      opacity: 1;
+      transform: translateY(0);
+      overflow: visible;
+    }
+  }
+}

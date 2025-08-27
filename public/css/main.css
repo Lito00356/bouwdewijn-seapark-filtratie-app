@@ -1,0 +1,56 @@
+@import url("./abstracts/variables.css");
+@import url("./base/reset.css");
+@import url("./base/fonts.css");
+@import url("./base/typography.css");
+@import url("./components/icons.css");
+@import url("./components/accordion.css");
+@import url("./components/button.css");
+@import url("./components/form.css");
+@import url("./components/list.css");
+@import url("./components/navigation.css");
+@import url("./components/overlay.css");
+@import url("./components/header.css");
+@import url("./components/users.css");
+@import url("./components/breadcrumbs.css");
+@import url("./components/dashboardSection.css");
+@import url("./components/notifications.css");
+@import url("./components/modal.css");
+@import url("./components/taskCompletion.css");
+@import url("./components/dropdown.css");
+@import url("./components/validation.css");
+@import url("./components/card-grid.css");
+@import url("./components/measurementsTable.css");
+@import url("./components/statistics.css");
+@import url("./components/statisticsTable.css");
+@import url("./components/graph.css");
+@import url("./utilities/layout.css");
+@import url("./utilities/spacing.css");
+@import url("./utilities/accessibility.css");
+@import url("./utilities/text.css");
+@import url("./utilities/transforms.css");
+@import url("./utilities/borders.css");
+@import url("./utilities/position.css");
+@import url("./utilities/interaction.css");
+@import url("./utilities/background.css");
+@import url("./utilities/shadows.css");
+@import url("history.css");
+@import url("crew.css");
+
+body {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  display: flex;
+  overflow: hidden auto;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: var(--fg-color);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

@@ -1,0 +1,74 @@
+<section class="dashboard">
+    <div>
+        <%- include("../partials/breadcrumbs") %>
+    </div>
+
+    <strong class="dashboard__title">
+        <%= breadcrumbs.at(-1).label %>
+    </strong>
+
+    <div class="dashboard__outlet">
+        <div class="dashboard__actions">
+            <%- include('../partials/admin-addEntityButton', {entityName: "measurement_definition" }) %>
+        </div>
+        <% if (groupedMeasurements && Object.keys(groupedMeasurements).length> 0) { %>
+            <% Object.entries(groupedMeasurements).forEach(([category, definitions])=> { %>
+                <% if (definitions.length> 0) { %>
+                    <div class="measurement-category m-top-2xl">
+                        <h3 class="measurement-category__title">
+                            <%= category.charAt(0).toUpperCase() + category.slice(1).replace('_', ' ' ) %>
+                        </h3>
+
+                        <table class="measurement-table">
+                            <thead class="measurement-table__header">
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Min</th>
+                                    <th>Max</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% definitions.forEach(definition=> { %>
+                                    <%- include('../partials/admin-measurementBlock', { definition }) %>
+                                        <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <% } %>
+                        <% }); %>
+                            <% } else { %>
+                                <p class="text-muted">No measurement definitions found.</p>
+                                <% } %>
+                                    <% if (inactiveMeasurements && inactiveMeasurements.length> 0) { %>
+                                        <div class="dashboard__inactive-section">
+                                            <strong class="dashboard__subtitle">Inactive Measurement
+                                                Definitions</strong>
+                                            <div class="card-grid dashboard__list--inactive">
+                                                <% inactiveMeasurements.forEach(definition=> { %>
+                                                    <%- include('../partials/admin-measurementCardBlock', { definition
+                                                        }) %>
+                                                        <% }); %>
+                                            </div>
+                                        </div>
+                                        <% } %>
+    </div>
+</section>
+
+<div class="<%= breadcrumbs.at(-1) && breadcrumbs.at(-1).label === 'Departments' ? '' : 'modal-window' %>"
+    id="modal-bg">
+    <section
+        class="<%= breadcrumbs.at(-1) && breadcrumbs.at(-1).label === 'Departments' ? 'notifications' : 'notifications-modal' %>"
+        id="notifications-section">
+
+        <% if (breadcrumbs.at(-1) && breadcrumbs.at(-1).label !=="Departments" ) { %>
+            <%- include("../partials/notificationsModal") %>
+                <% } %>
+    </section>
+</div>
+
+<%- include('../partials/generic-modal', { config: { modalName: 'edit-measurement_definition' ,
+    title: 'Edit Reference Value' , formPartial: 'forms/value-edit-form' } }) %>
+
+    <%- include('../partials/generic-modal', { config: { modalName: 'add-measurement_definition' ,
+        title: 'Add New Reference Value' , formPartial: 'forms/value-add-form' } }) %>

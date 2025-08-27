@@ -1,0 +1,67 @@
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: var(--spacing-xs) var(--spacing-xl) var(--spacing-xs) var(--spacing-lg);
+  padding-right: calc(var(--spacing-lg) + var(--spacing-base));
+  width: 9.375rem;
+
+  &.history {
+    width: fit-content;
+  }
+}
+
+.select::-ms-expand {
+  display: none;
+}
+
+.select option {
+  background: #f3f3f5;
+}
+
+.select option:checked {
+  background-color: var(--accent-color);
+}
+
+.select-wrapper .icon {
+  position: absolute;
+  right: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  width: var(--spacing-lg);
+}
+
+.select:focus {
+  outline: 2px solid var(--accent-color);
+}
+
+.measurement-input {
+  width: var(--4xl);
+  text-align: center;
+
+  &.user-pin {
+    text-align: left;
+  }
+}
+
+/* Remove number input spinners/arrows */
+.measurement-input::-webkit-outer-spin-button,
+.measurement-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.measurement-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+textarea {
+  resize: none;
+}

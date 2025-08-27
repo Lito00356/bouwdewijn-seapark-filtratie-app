@@ -1,0 +1,33 @@
+<header class="flex flex--between flex--center p-base border-b2 fixed fixed--top z-50 bg-grey-active">
+  <div class="flex flex--center gap-xs">
+    <svg class="icon icon--3xl icon--account">
+      <use href="/assets/icons/sprite.svg#account-icon"></use>
+    </svg>
+    <span class="text-lg">
+      <%= currentUser.firstname %>
+    </span>
+  </div>
+  <div class="flex flex--center gap-sm">
+    <a href="/employee/notifications" aria-label="Go to Notifications" class="btn butn--notifications relative">
+      <svg class="icon icon--25xl icon--fg-color pointer">
+        <use href="/assets/icons/sprite.svg#notifications-icon"></use>
+      </svg> <span class="notifications__amount" data-notification-counter<% if (unreadNotificationCount===0) { %>
+        style="display: none;"<% } %>>
+          <%= unreadNotificationCount %>
+      </span>
+    </a>
+    <svg class="icon icon--3xl pointer" data-toggle="mobile-nav" data-icon="hamburger">
+      <use href="/assets/icons/sprite.svg#hamburger-icon"></use>
+    </svg>
+    <svg class="icon icon--3xl hidden pointer" data-toggle="mobile-nav" data-icon="close">
+      <use href="/assets/icons/sprite.svg#close-icon"></use>
+    </svg>
+  </div>
+</header>
+
+<main class="flex flex--col gap-base p-base p-top-main-mobile w-full">
+
+  <% const partial=`../partials/employee-${section}`; %>
+    <%- include(partial) %>
+
+</main>

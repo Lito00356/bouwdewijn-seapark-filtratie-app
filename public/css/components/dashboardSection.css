@@ -1,0 +1,119 @@
+.dashboard {
+  width: 100%;
+  padding-left: var(--navbar-width);
+}
+
+.dashboard__title {
+  display: inline-block;
+  padding: var(--spacing-base) var(--spacing-base) 0 var(--spacing-base);
+  font-size: var(--font-base);
+}
+
+.dashboard__outlet {
+  padding: var(--spacing-base);
+}
+
+.dashboard__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: var(--spacing-base);
+  width: 100%;
+  padding-left: 0;
+  margin-bottom: var(--spacing-base);
+}
+
+.dashboard__list-item {
+  display: flex;
+  align-items: center;
+  height: 7rem;
+  background-color: var(--accent-muted-color);
+  gap: var(--spacing-base);
+  list-style-type: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--spacing-md);
+  transition: 0.2s ease;
+}
+
+.dashboard__list-item--sub {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dashboard__item-location {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 var(--spacing-sm);
+  font-size: var(--font-lg);
+}
+
+.dashboard__item-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.dashboard__item-actions--sub {
+  width: 100%;
+  justify-content: space-around;
+}
+
+.dashboard__inactive-section {
+  margin-top: var(--spacing-2xl);
+  width: 100%;
+}
+
+.dashboard__subtitle {
+  font-size: var(--font-md);
+  color: var(--text-muted);
+  opacity: 0.5;
+  margin-bottom: var(--spacing-sm);
+  font-weight: normal;
+}
+
+.dashboard__list--inactive .dashboard__list-item,
+.dashboard__list--inactive .card-item {
+  opacity: 0.4;
+  border: 1px dashed var(--text-muted-color);
+  background-color: transparent;
+
+  &:hover {
+    scale: 1.01;
+    opacity: 1;
+  }
+}
+
+.dashboard__item-link {
+  padding: var(--spacing-base);
+  transition: 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    scale: 1.15;
+  }
+}
+
+.dashboard__actions {
+  display: flex;
+    justify-self: flex-end;
+    gap: var(--spacing-md);
+}
+
+.dashboard__action {
+  display: flex;
+  align-items: center;
+  background-color: var(--accent-muted-color);
+  gap: var(--spacing-base);
+  list-style-type: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--spacing-md);
+  transition: 0.2s ease;
+  cursor: pointer;
+  height: fit-content;
+  width: fit-content;
+
+  &:hover {
+      scale: 1.05;
+    }
+}

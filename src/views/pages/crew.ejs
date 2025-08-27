@@ -1,0 +1,65 @@
+<section class="dashboard">
+    <div>
+        <%- include("../partials/breadcrumbs") %>
+    </div>
+
+    <div class="flex flex--between flex--center">
+        <strong class="dashboard__title">
+            <%= breadcrumbs[1].label %>
+        </strong>
+    </div>
+
+    <section class="dashboard__outlet flex flex--col gap-base">
+        <section class="crew-container">
+            <strong class="activity-crew">Active crew overview</strong>
+            <div class="active-container">
+                <div class="crew__titles">
+                    <span class="crew__first-name">First name</span>
+                    <span class="crew__last-name">Last name</span>
+                    <span class="crew__ci">Contact info</span>
+                    <span class="crew__settings">Settings</span>
+                </div>
+                <section class="crew__items" id="active-crew">
+                    <!-- Adding items with fetch -->
+                </section>
+            </div>
+        </section>
+        <section>
+            <div class="dashboard__actions">
+                <%- include('../partials/admin-addEntityButton', { entityName: "user" }) %>
+            </div>
+        </section>
+
+        <section class="crew-container">
+            <strong class="activity-crew">Inactive crew overview</strong>
+            <div class="active-container">
+                <div class="crew__titles">
+                    <span class="crew__first-name">First name</span>
+                    <span class="crew__last-name">Last name</span>
+                    <span class="crew__ci">Contact info</span>
+                    <span class="crew__settings">Settings</span>
+                </div>
+                <section class="crew__items" id="inactive-crew">
+                    <!-- Adding items with fetch -->
+                </section>
+            </div>
+        </section>
+    </section>
+</section>
+
+</div>
+
+<div class="<%= breadcrumbs[1] && breadcrumbs[1].label === 'Departments' ? '' : 'modal-window' %>" id="modal-bg">
+    <section
+        class="<%= breadcrumbs[1] && breadcrumbs[1].label === 'Departments' ? 'notifications' : 'notifications-modal' %>"
+        id="notifications-section">
+
+        <% if (breadcrumbs[1] && breadcrumbs[1].label !=="Departments" ) { %>
+            <%- include("../partials/notificationsModal") %>
+                <% } %>
+    </section>
+</div>
+</section>
+
+<%- include("../partials/generic-modal", { config: { modalName: 'add-user' , title: 'Add user' ,
+    formPartial: 'forms/crew-add-form' } }) %>

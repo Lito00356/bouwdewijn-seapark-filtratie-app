@@ -1,0 +1,65 @@
+<section class="dashboard">
+    <div>
+        <%- include("../partials/breadcrumbs") %>
+    </div>
+
+    <strong class="dashboard__title">
+        <%= breadcrumbs.at(-1).label %>
+    </strong>
+    <a href="/history" class="btn dashboard__action shadow-subtle m-base" title="View History">
+        <svg class="icon icon--2xl">
+            <use href="/assets/icons/sprite.svg#history-icon"></use>
+        </svg>
+        <small>Department History</small>
+    </a>
+
+    <% if (department.sub_departments && department.sub_departments.length> 0) { %>
+        <div class="dashboard__outlet">
+            <h3 class="dashboard__subtitle">Subdepartments</h3>
+            <ul class="dashboard__list">
+                <% department.sub_departments.forEach(subDept=> { %>
+                    <%- include("../partials/admin-subdepartmentBlock", {subDept}) %>
+                        <% }); %>
+            </ul>
+            <div class="dashboard__actions">
+                <%- include('../partials/admin-addEntityButton', {entityName: "sub_department" }) %>
+            </div>
+
+            <% if (inActiveSubdepartments.sub_departments && inActiveSubdepartments.sub_departments.length> 0) { %>
+                <div class="dashboard__inactive-section">
+                    <strong class="dashboard__subtitle">Inactive Subdepartments</strong>
+                    <ul class="dashboard__list dashboard__list--inactive">
+                        <% inActiveSubdepartments.sub_departments.forEach(subDept=> { %>
+                            <%- include("../partials/admin-subdepartmentBlock", {subDept}) %>
+                                <% }); %>
+                    </ul>
+                </div>
+        </div>
+        <% } %>
+            <% } else { %>
+                <div class="dashboard__outlet">
+                    <p class="text-muted">No subdepartments found for this department.</p>
+                    <div class="dashboard__actions">
+                        <%- include('../partials/admin-addEntityButton', {entityName: "sub_department" }) %>
+                    </div>
+                </div>
+                <% } %>
+</section>
+
+<div class="<%= breadcrumbs.at(-1) && breadcrumbs.at(-1).label === 'Departments' ? '' : 'modal-window' %>"
+    id="modal-bg">
+    <section
+        class="<%= breadcrumbs.at(-1) && breadcrumbs.at(-1).label === 'Departments' ? 'notifications' : 'notifications-modal' %>"
+        id="notifications-section">
+
+        <% if (breadcrumbs.at(-1) && breadcrumbs.at(-1).label !=="Departments" ) { %>
+            <%- include("../partials/notificationsModal") %>
+                <% } %>
+    </section>
+</div>
+
+<%- include('../partials/generic-modal', { config: { modalName: 'edit-sub_department' , title: 'Edit Subdepartment' ,
+    formPartial: 'forms/subdepartment-edit-form' } }) %>
+
+    <%- include('../partials/generic-modal', { config: { modalName: 'add-sub_department' ,
+        title: 'Add New Subdepartment' , formPartial: 'forms/subdepartment-add-form' } }) %>

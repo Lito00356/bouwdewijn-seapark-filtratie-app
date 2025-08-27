@@ -1,0 +1,27 @@
+.table {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+.table__titles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 3rem 11rem 3rem;
+}
+.table__values {
+  display: flex;
+  flex-direction: column;
+}
+
+.table__values-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 3rem 11rem 3rem;
+  padding: var(--spacing-xs);
+
+  &:nth-child(odd) {
+    background-color: var(--text-extra-muted-color);
+  }
+}
+
+.table__values-justifyE {
+  justify-self: end;
+}

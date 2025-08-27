@@ -1,0 +1,55 @@
+<section class="dashboard">
+    <div>
+        <%- include("../partials/breadcrumbs") %>
+    </div>
+
+    <strong class="dashboard__title">
+        <%= breadcrumbs.at(-1).label %>
+    </strong>
+
+    <section class="dashboard__outlet">
+        <% if (departments && departments.length> 0) { %>
+            <ul class="dashboard__list">
+                <% departments.forEach(department=> { %>
+                    <%- include("../partials/admin-departmentBlock", {department}) %>
+                        <% }) %>
+            </ul>
+            <% } else { %>
+                <p class="text-muted">No departments found.</p>
+                <% } %>
+
+                    <div class="dashboard__actions">
+                        <%- include('../partials/admin-addEntityButton', {entityName: "department" }) %>
+                    </div>
+
+                    <% if (inactiveDepartments && inactiveDepartments.length> 0) { %>
+                        <div class="dashboard__inactive-section">
+                            <strong class="dashboard__subtitle">Inactive Departments</strong>
+                            <ul class="dashboard__list dashboard__list--inactive">
+                                <% inactiveDepartments.forEach(department=> { %>
+                                    <%- include("../partials/admin-departmentBlock", {department}) %>
+                                        <% }) %>
+                            </ul>
+                        </div>
+                        <% } %>
+    </section>
+</section>
+
+    <section class="notifications">
+        <div class="flex flex--between flex--center">
+            <h2 class="text-lg font-semibold">Recent Notifications</h2>
+            <button data-action="mark-all-as-read" class="btn border shadow-subtle p-inline-sm rounded-md bg-grey-active">Read all</button>
+
+        </div>
+        <ul class="flex flex--col gap-sm" data-container="notifications-list">
+            <!-- Dynamic Notifications here -->
+        </ul>
+
+    </section>
+
+
+<%- include('../partials/generic-modal', { config: { modalName: 'edit-department' , title: 'Edit Department' ,
+    formPartial: 'forms/department-edit-form' } }) %>
+
+    <%- include('../partials/generic-modal', { config: { modalName: 'add-department' , title: 'Add New Department' ,
+        formPartial: 'forms/department-add-form' } }) %>

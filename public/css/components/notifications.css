@@ -1,0 +1,126 @@
+.notifications {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-base);
+  width: 25rem;
+  padding: var(--spacing-base);
+  border-left: 1px solid var(--text-extra-muted-color);
+  height: 100svh;
+  height: 100dvh;
+  overflow-y: auto;
+}
+
+.notifications__list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.notifications__list-item {
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+}
+
+.notifications__list-item:not(:last-child) {
+  margin-bottom: var(--spacing-base);
+}
+
+.notification__item-icon {
+  width: var(--spacing-2xl);
+  height: var(--spacing-2xl);
+}
+
+.notifications__item-textwrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.notification__item-time {
+  color: var(--text-extra-muted-color);
+}
+
+.notifications__icon {
+  width: var(--spacing-2xl);
+  height: var(--spacing-2xl);
+}
+
+.notifications__amount {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 1.15rem;
+  aspect-ratio: 1 / 1;
+  font-size: var(--font-md);
+  color: var(--white-alt);
+  z-index: 2;
+  border-radius: 50%;
+  animation: pulse 3s ease infinite;
+  background-color: var(--alert-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    right: var(--spacing-xs);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0px 0px 0px 0px var(--alert-color);
+  }
+
+  50% {
+    box-shadow: 0px 0px 0px 6px transparent;
+  }
+
+  100% {
+    box-shadow: 0px 0px 0px 10px transparent;
+  }
+}
+
+.modal-window {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100svh;
+  height: 100dvh;
+  background-color: rgba(94, 94, 94, 0.349);
+  display: none;
+  opacity: 0;
+  z-index: 5;
+  transition: display 0.3s, opacity 0.3s;
+  transition-behavior: allow-discrete;
+
+  &.open {
+    display: block;
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+}
+
+.notifications-modal {
+  position: fixed;
+  width: 20rem;
+  background-color: var(--white-alt);
+  top: 0;
+  right: -20rem;
+  height: 100svh;
+  height: 100dvh;
+  z-index: 5;
+  padding: 1rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+
+  &.open {
+    right: 0;
+  }
+}

@@ -1,0 +1,21 @@
+<li class="dashboard__list-item dashboard__list-item--sub shadow-subtle" data-subdepartment-id="<%= subDept.id %>"
+    data-department-id="<%= subDept.department_id %>" data-subdepartment-name="<%= subDept.name %>"
+    data-subdepartment-active="<%= subDept.is_active %>">
+    <div class="dashboard__item-location">
+        <strong>
+            <%= subDept.name %>
+        </strong>
+    </div>
+    <div class="dashboard__item-actions dashboard__item-actions--sub">
+        <a href="/statistics?department=<%= subDept.department_id %>&subdepartment=<%= subDept.id %>"
+            class="btn btn--link" title="View Statistics">
+            <svg class="icon icon--2xl">
+                <use href="/assets/icons/sprite.svg#chart-icon"></use>
+            </svg>
+            <small>
+                <%= subDept.name %> statistics
+            </small>
+        </a>
+        <%- include('admin-dropdown', {entityName: 'sub_department' }) %>
+    </div>
+</li>

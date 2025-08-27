@@ -1,0 +1,75 @@
+<section class="dashboard">
+    <div>
+        <%- include("../partials/breadcrumbs") %>
+    </div>
+
+    <strong class="dashboard__title">
+        <%= breadcrumbs.at(-1).label %>
+    </strong>
+
+    <div class="dashboard__outlet">
+        <% if (groupedActions && Object.keys(groupedActions).length> 0) { %>
+            <div class="list list--accordion m-bottom-lg">
+                <% Object.entries(groupedActions).forEach(([frequency, actions])=> { %>
+                    <% if (actions.length> 0) { %>
+                        <div class="accordion bg-blocks shadow-subtle">
+                            <input type="checkbox" id="accordion-<%= frequency %>" class="accordion__checkbox">
+                            <label for="accordion-<%= frequency %>" class="accordion__header p-block-base">
+                                <h3 class="text-lg font-medium">
+                                    <%= frequency==='as_needed' ? 'Extra' : frequency.charAt(0).toUpperCase() +
+                                        frequency.slice(1).replace('_', ' ' ) %>
+                                        tasks
+                                </h3>
+                                <svg class="icon icon--base">
+                                    <use href="/assets/icons/sprite.svg#arrow-icon"></use>
+                                </svg>
+                            </label>
+
+                            <div class="accordion__content">
+                                <div class="card-grid">
+                                    <% actions.forEach(action=> { %>
+                                        <%- include('../partials/admin-actionBlock', { action }) %>
+                                            <% }); %>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                            <% }); %>
+            </div>
+            <% } else { %>
+                <p class="text-muted">No actions found.</p>
+                <% } %>
+
+                    <div class="dashboard__actions">
+                        <%- include('../partials/admin-addEntityButton', {entityName: "action" }) %>
+                    </div>
+
+                    <% if (inactiveActions && inactiveActions.length> 0) { %>
+                        <div class="dashboard__inactive-section">
+                            <strong class="dashboard__subtitle">Inactive Actions</strong>
+                            <div class="card-grid dashboard__list--inactive">
+                                <% inactiveActions.forEach(action=> { %>
+                                    <%- include('../partials/admin-actionBlock', { action }) %>
+                                        <% }); %>
+                            </div>
+                        </div>
+                        <% } %>
+    </div>
+</section>
+
+<div class="<%= breadcrumbs.at(-1) && breadcrumbs.at(-1).label === 'Departments' ? '' : 'modal-window' %>"
+    id="modal-bg">
+    <section
+        class="<%= breadcrumbs.at(-1) && breadcrumbs.at(-1).label === 'Departments' ? 'notifications' : 'notifications-modal' %>"
+        id="notifications-section">
+
+        <% if (breadcrumbs.at(-1) && breadcrumbs.at(-1).label !=="Departments" ) { %>
+            <%- include("../partials/notificationsModal") %>
+                <% } %>
+    </section>
+</div>
+<%- include('../partials/generic-modal', { config: { modalName: 'edit-action' , title: 'Edit Action' ,
+    formPartial: 'forms/action-edit-form' } }) %>
+
+    <%- include('../partials/generic-modal', { config: { modalName: 'add-action' , title: 'Add New Action' ,
+        formPartial: 'forms/action-add-form' } }) %>

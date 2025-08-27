@@ -1,0 +1,23 @@
+<li class="dashboard__list-item shadow-subtle" data-department-id="<%= department.id %>" data-department-name="<%= department.name %>" data-department-active="<%= department.is_active %>">
+
+    <div class="dashboard__item-location">
+        <a href="/departments/<%= department.id %>" class="dashboard__item-link">
+            <strong>
+                <%= department.name %>
+            </strong>
+        </a>
+        <div class="dashboard__item-actions">
+            <% if (department.hasNotifications) { %>
+                <svg class="icon icon--warning">
+                    <use href="/assets/icons/sprite.svg#warning-icon"></use>
+                </svg>
+                <% } else { %>
+                    <svg class="icon icon--checkmark">
+                        <use href="/assets/icons/sprite.svg#checkmark-icon"></use>
+                    </svg>
+                    <% } %>
+
+                        <%- include('admin-dropdown', {entityName: "department" }) %>
+        </div>
+    </div>
+</li>

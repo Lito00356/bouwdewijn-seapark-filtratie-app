@@ -1,0 +1,137 @@
+@import url("./components/editUserForm.css");
+
+.crew-container {
+  background-color: var(--bg-blocks-color);
+  padding: var(--spacing-base);
+  border-radius: 0.75rem;
+}
+
+.active-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.crew__titles {
+  color: var(--text-extra-muted-color);
+}
+
+.crew__titles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 0.5fr;
+  padding: 0.75rem 0.75rem 0 0.75rem;
+  gap: var(--spacing-base);
+}
+
+.crew__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.crew__item {
+  position: relative;
+  display: grid;
+  gap: var(--spacing-base);
+  grid-template-columns: 1fr 1fr 2fr 0.5fr;
+  background-color: var(--accent-muted-color);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: 0.75rem;
+
+  &.inactive {
+    color: var(--text-muted-color);
+  }
+
+  &.inactive::after {
+    content: "";
+    position: absolute;
+    top: 1rem;
+    left: 0.4375rem;
+    right: 4.6875rem;
+
+    height: 1px;
+    background-color: var(--text-muted-color);
+  }
+
+  &.editing {
+    grid-template-columns: 1fr 1fr 1fr 0.5fr 0.5fr 0.5fr;
+    gap: 0.25rem;
+    background-color: var(--text-extra-muted-color);
+  }
+}
+
+.crew__settings {
+  padding: 0;
+  display: inline-block;
+  justify-self: end;
+  transform-origin: left;
+}
+
+
+.activity-crew {
+  color: var(--accent-color);
+}
+
+.settings-container {
+  position: relative;
+  text-align: end;
+}
+
+.button--open {
+  pointer-events: auto;
+  scale: 1;
+  transform-origin: center;
+  transition: scale 0.3s ease;
+
+  &.open {
+    scale: 0;
+    pointer-events: none;
+  }
+}
+
+.button--close {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  scale: 0;
+  opacity: 0;
+  transform-origin: center;
+  transition: scale 0.3s ease, opacity 0.2s ease;
+
+  &.open {
+    scale: 1;
+    pointer-events: auto;
+    opacity: 1;
+    transition: scale 0.3s ease, opacity 0.3s ease, visibility 0s linear 0s;
+  }
+}
+
+.crew__settings-edit {
+  position: absolute;
+  top: 3px;
+  right: 2.1rem;
+  display: flex;
+  justify-content: space-around;
+  width: 0;
+  height: fit-content;
+  padding: 0;
+  font-size: 0;
+  border-radius: 10px 0 0 10px;
+  background-color: var(--text-extra-muted-color);
+  border: none;
+  z-index: 5;
+  cursor: pointer;
+  transform-origin: bottom right;
+  transition: transform 0.3s ease, width 0.2s ease, padding 0.3s ease, font-size 0.2s ease;
+
+  &:hover {
+    transform: scaleX(1.05);
+  }
+
+  &.open {
+    width: 3.5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,8 @@
+node_modules
+
+*.sql
+*.dump
+
+.env
+.env.local
+.env.production

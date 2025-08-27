@@ -1,0 +1,49 @@
+<form id="addActionForm" class="modal__body">
+    <div class="form-group">
+        <label for="newActionName" class="text-base">Action Name</label>
+        <input type="text" id="newActionName" name="name" required
+            class="rounded p-inline-lg p-block-xs text-lg border shadow-subtle w-full">
+    </div>
+
+    <div class="form-group">
+        <label for="newObjectType" class="text-base">Object Type</label>
+        <div class="select-wrapper w-full">
+            <select id="newObjectType" name="object_type" required class="select rounded border shadow-subtle w-full">
+                <option value="">Select object type</option>
+                <option value="filter">Filter</option>
+                <option value="pump">Pump</option>
+                <option value="department">Department</option>
+                <option value="sub_department">Sub Department</option>
+            </select>
+            <svg class="icon">
+                <use href="/assets/icons/sprite.svg#arrow-icon"></use>
+            </svg>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="newFrequency" class="text-base">Frequency</label>
+        <div class="select-wrapper w-full">
+            <select id="newFrequency" name="frequency" required class="select rounded border shadow-subtle w-full">
+                <option value="">Select frequency</option>
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+                <option value="as_needed">As needed</option>
+
+            </select>
+            <svg class="icon">
+                <use href="/assets/icons/sprite.svg#arrow-icon"></use>
+            </svg>
+        </div>
+    </div>
+
+    <div class="modal__footer">
+        <button type="button" class="btn rounded p-inline-md p-block-sm text-lg bg-gray border-none pointer shadow"
+            data-close>Cancel</button>
+        <button type="submit"
+            class="btn rounded p-inline-md p-block-sm text-lg text-primary bg-blue-accent shadow pointer border-none">
+            Add Action
+        </button>
+    </div>
+</form>

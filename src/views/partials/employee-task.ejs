@@ -1,0 +1,141 @@
+<button type="button" class="btn btn--task flex flex--col gap-md"
+    data-trigger="modal-task-<%= task.id %>"
+    data-object-type="<%= task.object_type %>">
+    <span>
+        <%= task.name %>
+    </span>
+    <div class="flex flex--col gap-sm text-md text-muted w-full"
+        data-container="system-list">
+        <% let items=[]; let gridClass='grid--2' ; if
+            (task.object_type==='sub_department' ) { items=subdepartments; } else if
+            (task.object_type==='filter' ) { items=filters; } else if
+            (task.object_type==='pump' ) { items=pumps; } if (items.length <=2)
+            gridClass='grid--2' ; else if (items.length===3 || items.length===6)
+            gridClass='grid--3' ; else if (items.length>= 4) gridClass = 'grid--4';
+
+            if (task.object_type === 'pump' && items.length >= 5) {
+            gridClass += ' grid--center';
+            }
+            %>
+            <% if (items.length> 0) { %>
+                <% if (task.object_type==='sub_department' ) { %>
+                    <% if (items.length <=2) { %>
+                        <ul class="grid grid--2 grid--items-center w-full">
+                            <% items.forEach(item=> { %>
+                                <li
+                                    class="<%= items.length === 1 ? 'span-2' : '' %> w-full text-center">
+                                    <%= item.name %>
+                                </li>
+                                <% }) %>
+                        </ul>
+                        <% } else { %>
+                            <ul
+                                class="grid grid--2 grid--items-center gap-sm w-full">
+                                <% items.slice(0, 2).forEach(item=> { %>
+                                    <li class="w-full text-center">
+                                        <%= item.name %>
+                                    </li>
+                                    <% }) %>
+                            </ul>
+                            <% if (items.length>= 3) { %>
+                                <ul
+                                    class="grid grid--2 grid--items-center gap-sm w-full">
+                                    <li class="span-full w-full text-center">
+                                        <%= items[2].name %>
+                                    </li>
+                                </ul>
+                                <% } %>
+                                    <% if (items.length>= 4) { %>
+                                        <ul
+                                            class="grid grid--2 grid--items-center gap-sm w-full">
+                                            <% items.slice(3).forEach(item=> { %>
+                                                <li
+                                                    class="<%= items.slice(3).length === 1 ? 'span-full' : '' %> w-full text-center">
+                                                    <%= item.name %>
+                                                </li>
+                                                <% }) %>
+                                        </ul>
+                                        <% } %>
+                                            <% } %>
+                                                <% } else if (items.length <=4) { %>
+                                                    <ul
+                                                        class="grid <%= gridClass %> grid--items-center gap-sm w-full">
+                                                        <% items.forEach(item=> { %>
+                                                            <li
+                                                                class="<%= items.length === 1 ? 'span-2' : '' %> w-full text-center">
+                                                                <%= item.name %>
+                                                            </li>
+                                                            <% }) %>
+                                                    </ul>
+                                                    <% } else { %>
+                                                        <ul
+                                                            class="grid grid--4 grid--items-center gap-sm w-full">
+                                                            <% items.slice(0,
+                                                                4).forEach(item=> {
+                                                                %>
+                                                                <li
+                                                                    class="w-full text-center">
+                                                                    <%= item.name %>
+                                                                </li>
+                                                                <% }) %>
+                                                        </ul>
+                                                        <% if (items.length===5) {
+                                                            %>
+                                                            <ul
+                                                                class="grid grid--2 grid--items-center gap-sm w-full">
+                                                                <li
+                                                                    class="span-full w-full text-center">
+                                                                    <%= items[4].name
+                                                                        %>
+                                                                </li>
+                                                            </ul>
+                                                            <% } else if
+                                                                (items.length===6) {
+                                                                %>
+                                                                <ul
+                                                                    class="grid grid--2 grid--items-center gap-sm w-full">
+                                                                    <% items.slice(4,
+                                                                        6).forEach(item=>
+                                                                        { %>
+                                                                        <li
+                                                                            class="w-full text-center">
+                                                                            <%= item.name
+                                                                                %>
+                                                                        </li>
+                                                                        <% }) %>
+                                                                </ul>
+                                                                <% } else if
+                                                                    (items.length===7)
+                                                                    { %>
+                                                                    <ul
+                                                                        class="grid grid--3 grid--items-center gap-sm w-full">
+                                                                        <% items.slice(4,
+                                                                            7).forEach(item=>
+                                                                            { %>
+                                                                            <li
+                                                                                class="w-full text-center">
+                                                                                <%= item.name
+                                                                                    %>
+                                                                            </li>
+                                                                            <% }) %>
+                                                                    </ul>
+                                                                    <% } else { %>
+                                                                        <ul
+                                                                            class="grid grid--4 grid--items-center gap-sm w-full">
+                                                                            <% items.slice(4,
+                                                                                8).forEach(item=>
+                                                                                { %>
+                                                                                <li
+                                                                                    class="w-full text-center">
+                                                                                    <%= item.name
+                                                                                        %>
+                                                                                </li>
+                                                                                <% })
+                                                                                    %>
+                                                                        </ul>
+                                                                        <% } %>
+                                                                            <% } %>
+                                                                                <% }
+                                                                                    %>
+    </div>
+</button>

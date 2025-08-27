@@ -1,0 +1,72 @@
+<dialog class="modal rounded bg-blocks border-none w-full" data-modal="modal-task-<%= task.id %>">
+    <form class="flex flex--col flex--center p-inline-lg gap-base p-top-lg relative" method=""
+        data-task-form="<%= task.id %>" data-action-id="<%= task.id %>" data-object-type="<%= task.object_type %>">
+        <h2 class="text-lg text-semibold text-center text-max-w255 line-height-12">
+            <%= task.name %>
+        </h2>
+        <% if (["sub_department","filter","pump"].includes(task.object_type)) { %>
+            <label class="select-wrapper flex flex--center gap-md">
+                <span>For:</span>
+                <select name="object_id" class="select border rounded pointer shadow-subtle bg-blocks"
+                    data-select="system-choice">
+                    <option value="all">All</option>
+                    <% if (task.object_type==="sub_department" ) { %>
+                        <% subdepartments.forEach(sd=> { %>
+                            <option value="<%= sd.id %>" data-original-name="<%= sd.name %>">
+                                <%= sd.name.replace(/ pool/gi, '' ).trim() %>
+                            </option>
+                            <% }) %>
+                                <% } else if (task.object_type==="filter" ) { %>
+                                    <% filters.forEach(f=> { %>
+                                        <option value="<%= f.id %>">
+                                            <%= f.name %>
+                                        </option>
+                                        <% }) %>
+                                            <% } else if (task.object_type==="pump" ) { %>
+                                                <% pumps.forEach(p=> { %>
+                                                    <option value="<%= p.id %>">
+                                                        <%= p.name %>
+                                                    </option>
+                                                    <% }) %>
+                                                        <% } %>
+                </select>
+                <svg class="icon icon--base">
+                    <use href="/assets/icons/sprite.svg#arrow-icon"></use>
+                </svg> </label>
+            <% } %>
+
+                <label class="select-wrapper flex flex--center gap-md">
+                    <span>Comment type:</span>
+                    <select name="comment_type" class="select border rounded pointer shadow-subtle bg-blocks"
+                        data-select="comment-type-choice">
+                        <% commentTypes.forEach(type=> { %>
+                            <option value="<%= type.value %>">
+                                <%= type.label %>
+                            </option>
+                            <% }) %>
+                    </select>
+                    <svg class="icon icon--base">
+                        <use href="/assets/icons/sprite.svg#arrow-icon"></use>
+                    </svg>
+                </label>
+
+                <label for="modal-notes-<%= task.id %>" class="w-full">
+                    <span class="sr-only">
+                        Notes or comments
+                    </span>
+                    <textarea class="border p-md w-full rounded" id="modal-notes-<%= task.id %>" name="notes"
+                        placeholder="Notes or comments" rows="4"></textarea>
+                </label>
+
+                <div class="grid gap-base m-bottom-lg">
+                    <button
+                        class="rounded p-inline-base p-block-md text-lg text-primary bg-grey-medium border-none shadow pointer"
+                        type="button" data-task-uncheck>Uncheck</button> <button
+                        class="rounded p-inline-md p-block-sm text-lg text-primary bg-blue-accent shadow pointer border-none"
+                        type="button" data-task-submit>Submit</button>
+                </div>
+                <svg class="icon icon--base absolute fixed--top-right-sm pointer" data-close>
+                    <use href="/assets/icons/sprite.svg#close-icon"></use>
+                </svg>
+    </form>
+</dialog>

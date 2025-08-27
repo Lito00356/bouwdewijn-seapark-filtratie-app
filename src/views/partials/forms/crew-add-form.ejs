@@ -1,0 +1,34 @@
+<form id="addUserForm" class="modal__body">
+    <div class="form-group">
+        <label for="first-name" class="text-base">First name</label>
+        <input type="text" id="form-first-name" name="first-name" required class="rounded p-inline-lg p-block-xs text-lg border shadow-subtle w-full">
+
+        <label for="last-name" class="text-base">Last Name</label>
+        <input type="text" id="form-last-name" name="last-name" required class="rounded p-inline-lg p-block-xs text-lg border shadow-subtle w-full">
+
+        <label for="contact-info" class="text-base">Contact info</label>
+        <input type="email" id="form-contact-info" name="contact-info" required class="rounded p-inline-lg p-block-xs text-lg border shadow-subtle w-full">
+
+        <label for="is-active" class="text-base">Active</label>
+        <select class="rounded p-inline-lg p-block-xs text-lg border shadow-subtle w-full" name="is-active" id="form-is-active">
+            <option value="Yes" selected>Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label for="pin-info" class="text-base">Pin</label>
+        <input inputmode="numeric" type="password" required maxlength="4" pattern="\d{4}" name="pin-info" id="form-pin-info" class="rounded p-inline-lg p-block-xs text-lg border shadow-subtle w-full measurement-input user-pin">
+
+        <label for="is-admin" class="text-base">Admin</label>
+        <select class="rounded p-inline-lg p-block-xs text-lg border shadow-subtle w-full" name="is-admin" id="form-is-admin">
+            <option value="Yes">Yes</option>
+            <option value="No" selected>No</option>
+        </select>
+    </div>
+
+    <div class="modal__footer">
+        <button type="button" class="rounded p-inline-md p-block-sm text-lg bg-gray border-none pointer shadow" data-close>Cancel</button>
+        <button type="submit" class="rounded p-inline-md p-block-sm text-lg text-primary bg-blue-accent shadow pointer border-none" data-create-user>
+            Add User
+        </button>
+    </div>
+</form>

@@ -1,0 +1,87 @@
+.measurement-category {
+  background: var(--bg-blocks-color);
+  border-radius: var(--spacing-sm);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-subtle);
+}
+
+.measurement-category__title {
+  font-size: var(--font-lg);
+  color: var(--accent-color);
+  margin-bottom: var(--spacing-lg);
+}
+
+.measurement-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  border: 1px solid var(--grey-light);
+}
+
+.measurement-table__header {
+  background: var(--grey-muted);
+  border-bottom: 2px solid var(--grey-light);
+}
+
+.measurement-table__header th {
+  padding: var(--spacing-base) var(--spacing-lg);
+  text-align: left;
+  width: calc((100% - 60px) / 3);
+}
+
+.measurement-table__header th:last-child {
+  width: 60px;
+}
+
+.measurement-table__row {
+  border-bottom: 1px solid var(--grey-light);
+  background-color: var(--white);
+  transition: background-color 0.2s ease;
+}
+
+.measurement-table__row:nth-child(even) {
+  background-color: var(--white-alt);
+}
+
+.measurement-table__row:hover {
+  background: var(--accent-muted-color);
+}
+
+.measurement-table__cell {
+  padding: var(--spacing-base) var(--spacing-lg);
+  color: var(--brand-color);
+  &:last-child {
+    padding: 0;
+  }
+}
+
+.measurement-table__value {
+  background: var(--white);
+  border: 1px solid var(--grey-medium);
+  border-radius: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  text-align: center;
+  width: 6.25rem;
+}
+
+.measurement-table__unit {
+  font-size: var(--font-md);
+  color: var(--text-muted-color);
+  margin-top: var(--spacing-xs);
+}
+
+@media (max-width: 768px) {
+  .measurement-category {
+    padding: var(--spacing-base);
+  }
+
+  .measurement-table__header th,
+  .measurement-table__cell {
+    padding: var(--spacing-sm);
+  }
+
+  .measurement-table__value {
+    min-width: 60px;
+  }
+}

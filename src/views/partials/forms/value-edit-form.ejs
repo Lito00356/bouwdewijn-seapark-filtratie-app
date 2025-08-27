@@ -1,0 +1,54 @@
+<form id="editValueForm" class="modal__body">
+
+    <div class="form-group">
+        <label for="valueName" class="text-base">Value Name</label>
+        <input type="text" id="valueName" name="name" required
+            class="rounded p-inline-lg p-block-xs text-lg border shadow-subtle w-full">
+    </div>
+
+    <div class="form-group">
+        <label for="shortName" class="text-base">Short Name</label>
+        <input type="text" id="shortName" name="short_name" required
+            class="rounded p-inline-lg p-block-xs text-lg border shadow-subtle w-full">
+    </div>
+
+    <div class="form-group">
+        <label for="unit" class="text-base">Unit</label>
+        <input type="text" id="unit" name="unit" required
+            class="rounded p-inline-lg p-block-xs text-lg border shadow-subtle w-full" placeholder="ppt, °C, pH..">
+    </div>
+
+    <div class="form-group">
+        <label for="minValue" class="text-base">Minimum Value</label>
+        <input type="number" id="minValue" name="min_value" step="0.01"
+            class="measurement-input rounded p-inline-lg p-block-xs text-lg border shadow-subtle w-full text-left">
+    </div>
+
+    <div class="form-group">
+        <label for="maxValue" class="text-base">Maximum Value</label>
+        <input type="number" id="maxValue" name="max_value" step="0.01"
+            class="measurement-input rounded p-inline-lg p-block-xs text-lg border shadow-subtle w-full text-left">
+    </div>
+
+    <div class="form-group">
+        <label for="valueActive" class="text-base">Status</label>
+        <div class="select-wrapper w-full">
+            <select id="valueActive" name="is_active" class="select rounded border shadow-subtle w-full">
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
+            </select>
+            <svg class="icon">
+                <use href="/assets/icons/sprite.svg#arrow-icon"></use>
+            </svg>
+        </div>
+    </div>
+
+    <div class="modal__footer">
+        <button type="button" class="btn rounded p-inline-md p-block-sm text-lg bg-gray border-none pointer shadow"
+            data-close>Cancel</button>
+        <button type="submit"
+            class="btn rounded p-inline-lg p-block-xs text-lg text-primary bg-blue-accent shadow pointer border-none">
+            Update Value
+        </button>
+    </div>
+</form>

@@ -1,0 +1,20 @@
+<div class="center-viewport">
+    <section class="user-grid">
+        <% users.forEach(user=> { %>
+            <div class="user-card bg-blue-accent-muted flex flex--col flex--center rounded-md p-base shadow"
+                data-userId="<%= user.id %>">
+                <svg class="icon icon--8xl icon--account">
+                    <use href="/assets/icons/sprite.svg#account-icon"></use>
+                </svg>
+                <p class="font-semibold text-lg text-center">
+                     <%= user.firstname %> <%= getInitials(user.lastname) %>
+                </p>
+                <form class=" user-card__form" id="user-<%= user.id %>-form" method="post" action="/login">
+                            <input type="hidden" name="user_id" value="<%= user.id %>">
+                            <%- include('../partials/login-form-input.ejs', { ...input, userId: user.id }) %>
+                                <input class="user-card__submit" type="submit" value="Login">
+                                </form>
+            </div>
+            <% }) %>
+    </section>
+</div>

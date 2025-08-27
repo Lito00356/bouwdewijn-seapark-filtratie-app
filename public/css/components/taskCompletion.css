@@ -1,0 +1,49 @@
+.task-completed {
+  color: var(--success-color);
+  text-decoration: line-through;
+}
+
+.completion-count-badge {
+  background-color: var(--success-color);
+  color: var(--white);
+  border-radius: 50%;
+  width: var(--lg);
+  aspect-ratio: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-md);
+  font-weight: bold;
+  margin-left: var(--spacing-sm);
+  box-shadow: var(--shadow);
+}
+
+.task-completion-indicator {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  border-radius: var(--font-md);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-md);
+  font-weight: bold;
+  z-index: 1;
+  pointer-events: none;
+  color: var(--white);
+  letter-spacing: 1px;
+  box-shadow: var(--shadow);
+  background-color: var(--grey-dark);
+}
+
+.task-completion-indicator.completed {
+  background-color: var(--success-color);
+}
+
+.task-fully-completed {
+  border-left: 3px solid var(--success-color) !important;
+  transition: border 0.3s ease-in-out;
+}
+
+.task-partially-completed {
+  border-left: 3px solid var(--grey-dark) !important;
+  transition: border 0.3s ease-in-out;
+}

@@ -1,0 +1,38 @@
+.bg-white { background-color: var(--white); }
+.bg-white-alt { background-color: var(--white-alt); }
+.bg-black { background-color: var(--black); }
+.bg-black-alt { background-color: var(--black-alt); }
+
+.bg-grey-muted { background-color: var(--grey-muted); }
+.bg-grey-light { background-color: var(--grey-light); }
+.bg-grey-medium { background-color: var(--grey-medium); }
+.bg-grey-dark { background-color: var(--grey-dark); }
+.bg-grey-active { background-color: var(--grey-active); }
+
+
+.bg-blue-accent { background-color: var(--blue-accent); }
+.bg-blue-brand { background-color: var(--brand-color); color: var(--white); }
+.bg-blue-accent-muted { background-color: var(--blue-accent-muted); }
+
+
+.bg-green { background-color: var(--green); }
+.bg-green-muted { background-color: var(--green-muted); }
+
+
+.bg-red { background-color: var(--red); }
+.bg-red-muted { background-color: var(--red-muted); }
+
+.bg-primary { background-color: var(--bg-color); }
+.bg-blocks { background-color: var(--bg-blocks-color); }
+.bg-in-progress { background-color: var(--bg-in-progress-color); }
+.bg-active { background-color: var(--bg-active-color); }
+
+.bg-alert { background-color: var(--alert-color); }
+.bg-alert-muted { background-color: var(--alert-muted-color); }
+.bg-success { background-color: var(--success-color); }
+.bg-success-muted { background-color: var(--success-muted-color); }
+
+.bg-accent { background-color: var(--accent-color); }
+.bg-accent-muted { background-color: var(--accent-muted-color); }
+
+.bg-transparent { background-color: transparent; }

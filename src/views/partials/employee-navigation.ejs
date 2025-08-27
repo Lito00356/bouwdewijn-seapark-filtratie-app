@@ -1,0 +1,22 @@
+<nav class="nav-mobile flex flex--col flex--between p-base fixed z-60 bg-grey-active border-l2 w-full fixed--bottom fixed--right translate-x-100"
+    data-nav="mobile" aria-label="Employee navigation">
+    <div class="flex flex--col gap-lg">
+        <p class="text-muted">Dashboards</p>
+        <ul class="flex flex--col gap-sm">
+            <% employeeNavigationData.dashboards.filter(item=> item.showInNav).forEach(item => { %>
+                <li>
+                    <a href="<%= item.href %>" aria-label="<%= item.ariaLabel %>"
+                        class="flex flex--center gap-sm p-sm rounded-sm <%= isNavItemActive(item.href) ? 'bg-blue-brand' : '' %>">
+                        <svg class="icon icon--base" role="img" aria-label="<%= item.title %> icon">
+                            <use href="/assets/icons/sprite.svg#<%= item.icon %>"></use>
+                        </svg>
+                        <span class="text-lg">
+                            <%= item.title %>
+                        </span>
+                    </a>
+                </li>
+                <% }); %>
+        </ul>
+    </div>
+    <a href="/logout" class="btn btn--logout" type="button" aria-label="Log out of your account">Log out</a>
+</nav>

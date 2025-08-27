@@ -1,0 +1,39 @@
+<%- include('./employee-content-header', { headerTitle: 'Tasks' , departments, selectedDepartmentId }) %>
+
+<section class="flex flex--col gap-md" data-container="employee-tasks">
+    <% frequencyOrder.forEach((freq, index)=> { %>
+        <% if (groupedActions[freq]) { %>
+            <div class="accordion list border">
+                <input type="checkbox" id="accordion-<%= index %>" class="accordion__checkbox">
+                <label for="accordion-<%= index %>" class="accordion__header p-block-base">
+                    <span class="text-lg">
+                        <%= frequencyLabels[freq] %> tasks
+                    </span>
+                    <svg class="icon arrow">
+                        <use href="/assets/icons/sprite.svg#arrow-icon"></use>
+                    </svg>
+                </label>
+                <ul class="accordion__content">
+                    <div class="list list--accordion">
+                        <% groupedActions[freq].forEach(task=> { %>
+                            <li>
+                                <%- include('./employee-task', { 
+                                    task, 
+                                    subdepartments, 
+                                    filters, 
+                                    pumps 
+                                }) %>
+                                <%- include('./employee-task-modal', { 
+                                    task, 
+                                    subdepartments, 
+                                    filters, 
+                                    pumps 
+                                }) %>
+                            </li>
+                        <% }) %>
+                    </div>
+                </ul>
+            </div>
+        <% } %>
+    <% }) %>
+</section>

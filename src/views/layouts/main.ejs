@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sealife LSS</title>
+    <link rel="prefetch" href="/assets/icons/sprite.svg" as="image" type="image/svg+xml">
+    <script type="importmap">
+        {
+        "imports": {
+        "date-fns": "https://unpkg.com/date-fns@2.30.0/esm/index.js",
+        "date-fns/": "https://unpkg.com/date-fns@2.30.0/esm/"
+        }
+        }
+    </script>
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+
+    <% if (currentUrl.includes('employee')) { %>
+        <%- include("../partials/employee-navigation") %>
+            <% } else { %>
+                <header class="navigation">
+                    <%- include("../partials/navigation") %>
+                </header>
+                <% } %>
+
+                    <%- body %>
+
+                        <% if (currentUrl.includes('employee')) { %>
+                            <script src="/scripts/employee.js" type="module"></script>
+                            <% } else { %>
+                                <script src="/scripts/admin.js" type="module"></script>
+                                <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
+                                <% } %>
+</body>
+
+</html>

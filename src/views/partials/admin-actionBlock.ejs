@@ -1,0 +1,13 @@
+<div class="card-item card-item--<%= action.object_type %>" data-action-id="<%= action.id %>"
+    data-action-name="<%= action.name %>" data-action-object-type="<%= action.object_type %>"
+    data-action-frequency="<%= action.frequency %>" data-action-active="<%= action.is_active %>">
+    <div class="card-item__header">
+        <h4 class="card-item__title">
+            <%= action.name %>
+        </h4>
+        <%- include('../partials/admin-dropdown', {entityName: "action" }) %>
+    </div>
+    <span class="card-item__badge">
+        <%= action.object_type.charAt(0).toUpperCase() + action.object_type.slice(1).replace('_', ' ' ) %>
+    </span>
+</div>

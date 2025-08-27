@@ -1,0 +1,34 @@
+<nav class="breadcrumbs">
+    <ul
+        class="<%= breadcrumbs.at(-1) && breadcrumbs.at(-1).label === 'Departments' ? 'breadcrumbs__list' : 'breadcrumbs__list-flex' %>">
+        <% breadcrumbs.forEach(crumb=> { %>
+            <li class="breadcrumbs__list-item">
+                <% if (!crumb.href ) { %>
+                    <span>
+                        <%= crumb.label %>
+                    </span>
+                    <% } else { %>
+                        <a class="breadcrumbs__list-link" href=" <%=crumb.href %>">
+                            <%= crumb.label %>
+                        </a>
+                        <% } %>
+            </li>
+            <% }); %>
+    </ul>
+    <button class="btn btn--notifications relative" id="notification-bell">
+        <svg class="icon notifications__icon">
+            <% if (breadcrumbs.at(-1) && breadcrumbs.at(-1).label !=="Departments" ) { %>
+                <use href="/assets/icons/sprite.svg#notifications-icon"></use>
+                <% } %>
+        </svg>
+        <% if (breadcrumbs.at(-1) && breadcrumbs.at(-1).label !=='Departments' ) { %>
+            <% if (typeof unreadNotificationCount !=='undefined' && unreadNotificationCount> 0) { %>
+                <span class="notifications__amount" data-notification-counter>
+                    <%= unreadNotificationCount %>
+                </span>
+                <% } else if (typeof unreadNotificationCount==='undefined' ) { %>
+                    <span class="notifications__amount" data-notification-counter style="display: none;"></span>
+                    <% } %>
+                        <% } %>
+    </button>
+</nav>

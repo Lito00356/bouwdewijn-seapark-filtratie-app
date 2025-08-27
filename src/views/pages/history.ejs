@@ -1,0 +1,62 @@
+<section class="dashboard">
+    <div>
+        <%- include("../partials/breadcrumbs") %>
+    </div>
+
+    <div class="flex flex--between flex--center">
+        <strong class="dashboard__title">
+            <%= breadcrumbs[1].label %>
+        </strong>
+    </div>
+
+    <section class=" dashboard__outlet">
+        <div class="flex flex--between rounded-md flex--center" id="outlet">
+            <strong id="frequencyDisplay">Task history - <span>All tasks/actions </span></strong>
+            <div class="flex gap-md relative">
+                <div class="select-wrapper flex flex--center">
+                    <span class="p-inline-sm">Frequency of tasks: </span>
+                    <select name="frequency" class="select border rounded pointer shadow-subtle bg-blocks" id="frequency-select">
+                        <option value="all" class="text-base bg-blocks" selected>All</option>
+                        <% Object.entries(frequencyLabels).forEach(([key, value])=> { %>
+                            <option value="<%= key %>" class="text-base bg-blocks">
+                                <%= value %>
+                            </option>
+                            <% }); %>
+                    </select>
+                    <svg class="icon icon--base">
+                        <use href="/assets/icons/sprite.svg#arrow-icon"></use>
+                    </svg>
+                </div>
+                <label class="relative">
+                    Date:
+                    <input type="date" id="calendar-selection" class="calendar ">
+                </label>
+                <span class="flex flex--center" id="date-highlight">Text</span>
+            </div>
+        </div>
+
+        <div class="logs-container">
+            <div class="logs__titles">
+                <span class="log-task">Task name</span>
+                <span class="log-system">System name</span>
+                <span class="log-completion">Performed on</span>
+                <span class="log-person">Completed by</span>
+                <span class="log-status">Status</span>
+                <span class="log-error">Error</span>
+            </div>
+            <section class="logs__items" id="logs-container">
+            </section>
+        </div>
+    </section>
+
+</section>
+
+<div class="<%= breadcrumbs[1] && breadcrumbs[1].label === 'Departments' ? '' : 'modal-window' %>" id="modal-bg">
+    <section class="<%= breadcrumbs[1] && breadcrumbs[1].label === 'Departments' ? 'notifications' : 'notifications-modal' %>" id="notifications-section">
+
+        <% if (breadcrumbs[1] && breadcrumbs[1].label !=="Departments" ) { %>
+            <%- include("../partials/notificationsModal") %>
+                <% } %>
+
+    </section>
+</div>
